@@ -1,9 +1,9 @@
 \chapter{Análisis Inicial de los datos.}
-Previamente al diseño de la solución, se decidió realizar un análisis de los datos de entrenamiento tal que se pueda determinar sus características y formas en que las pueden ser aprovechadas.
+Previamente al diseño de la solución, se decidió realizar un análisis de los datos de entrenamiento tal que se pueda determinar sus características y formas en las que pueden ser aprovechadas.
 
 En principio podemos decir que contamos con 42000 imágenes de 28 píxeles de ancho por 28 píxeles de alto. Cada una esta ligada a una clase de entre 10 que pueden ser 0,1,...,9. 
 
-En la Tabla 1.1 se puede observar el porcentaje de imágenes de cada una de las clases que existen en el set de entrenamiento y como bien se puede observar, ser puede decir que el mismo esta balanceado. 
+En la Tabla 1.1 se puede observar el porcentaje de imágenes de cada una de las clases que existen en el set de entrenamiento. Se puede decir entonces que los datos están bien balanceados.
 
 \begin{table}[htp]
   \caption{Porcentaje de imágenes de cada una de las clases en el train}
@@ -20,7 +20,7 @@ En la Tabla 1.1 se puede observar el porcentaje de imágenes de cada una de las 
   \end{center}
 \end{table}
 
-Por otro lado si realizamos un promedio de todas las imágenes y observamos los valores obtenidos, daremos cuenta de que existen pixels cuyo valor es 0. Esto nos da pie para pensar que podríamos a llegar a prescindir de algunos atributos, reduciendo así el costo computacional que requerirá procesar todos estos datos. Mas adelante en el informe veremos que esto efectivamente es así.
+Por otro lado si realizamos un promedio de todas las imágenes y observamos los valores obtenidos, daremos cuenta de que existen pixels cuyo valor es 0. Esto nos da pie a pensar de que podríamos llegar a prescindir de algunos atributos, reduciendo así el costo computacional que requerirá procesar todos estos datos. Mas adelante en el informe veremos que esto efectivamente es así.
 \begin{figure}[htp]
   \begin{center}
     \includegraphics[width=15cm]{promImg.jpeg}
