@@ -1,7 +1,7 @@
 \chapter{Análisis Inicial de los datos.}
 Previamente al diseño de la solución, se decidió realizar un análisis de los datos de entrenamiento tal que se pueda determinar sus características y formas en las que pueden ser aprovechadas.
 
-En principio podemos decir que contamos con 42000 imágenes de 28 píxeles de ancho por 28 píxeles de alto. Cada una esta ligada a una clase de entre 10 que pueden ser 0,1,...,9. 
+En principio podemos decir que contamos con 42000 imágenes de 28 píxeles de ancho por 28 píxeles de alto dispuestas en un vector de 784 dimensiones. Cada una de estas imágenes esta ligada a una clase de entre 10 que pueden ser 0,1,...,9. 
 
 En la Tabla 1.1 se puede observar el porcentaje de imágenes de cada una de las clases que existen en el set de entrenamiento. Se puede decir entonces que los datos están bien balanceados.
 
@@ -30,7 +30,7 @@ Por otro lado si realizamos un promedio de todas las imágenes y observamos los 
 \end{figure}
 Podemos usar la Figura \ref{plot1} para detectar algunos puntos o atributos anómalos, que aunque sean pocos, consideramos necesario tener que eliminarlos.
 
-Antes de modificar de alguna forma el set de entrenamiento, analizamos los valores promedio de los atributos de los registros que se encuentran el set de test, tal que no comprometamos datos que serán relevantes durante la fase de prueba. Figura \ref{plot2}.
+Antes de modificar de alguna forma el set de entrenamiento, analizamos los valores promedio de los atributos de los registros que se encuentran el set de test tal que no comprometamos datos que serán relevantes durante la fase de prueba\footnote{Es interesante observar el parecido entre ambos resultados, sin embargo, no se puede hacer ningún tipo de conjetura.}. Figura \ref{plot2}.
 
 \begin{figure}[htp]
   \begin{center}
@@ -40,6 +40,6 @@ Antes de modificar de alguna forma el set de entrenamiento, analizamos los valor
   \end{center}
 \end{figure}
 
-Mediante Forwar Selection, el algoritmo KNN con un \textit{K} igual a 3 y los resultados recientemente obtenidos se pudo llegar a la conclusión de que solo son necesarios\footnote{No se modifico el set de entrenamiento con este criterio para todos los algoritmos que se usaron hasta el momento} los pixels contenidos en el cuadrante $ [4,26]\times[2,27] $ para obtener buenos resultados. 
+Mediante Forwar Selection, el algoritmo KNN con un \textit{K} igual a 3 y los resultados recientemente obtenidos se pudo llegar a la conclusión de que solo son necesarios\footnote{No se modifico el set de entrenamiento con este criterio para todos los algoritmos que se usaron hasta el momento} los píxeles contenidos en el cuadrante $ [4,26]\times[2,27] $\footnote{Considerando cada registro como una matriz de $ [1,28]\times[1,28] $}. De esta forma se pasa de lidiar con 784 atributos por registro a 550.
 
-En caso de añadir mas registros a nuestro set de entrenamiento, algo que esta dentro de las intenciones del proyecto, se deberia realzar nuevamente este tipo de análisis. Sin embargo, creemos que es importante tener una referencia de la cual partir durante el diseño de este trabajo.
+En caso de añadir mas registros a nuestro set de entrenamiento, algo que esta dentro de las intenciones del proyecto, se debería realzar nuevamente este tipo de análisis. Sin embargo, creemos que es importante tener una referencia de la cual partir durante el diseño de este trabajo.
