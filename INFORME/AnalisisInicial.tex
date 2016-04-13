@@ -28,8 +28,10 @@ Por otro lado si realizamos un promedio de todas las imágenes y observamos los 
     \label{plot1}
   \end{center}
 \end{figure}
+Podemos usar la Figura \ref{plot1} para detectar algunos puntos o atributos anómalos, que aunque sean pocos, consideramos necesario tener que eliminarlos.
 
-Antes de modificar de alguna forma el set de entrenamiento, analizamos los valores promedio de los atributos de los registros que se encuentran el set de test y sus resultados fueron los siguientes. Figura \ref{plot2}
+Antes de modificar de alguna forma el set de entrenamiento, analizamos los valores promedio de los atributos de los registros que se encuentran el set de test, tal que no comprometamos datos que serán relevantes durante la fase de prueba. Figura \ref{plot2}.
+
 \begin{figure}[htp]
   \begin{center}
     \includegraphics[width=15cm]{Rplot01.jpeg}
@@ -37,3 +39,7 @@ Antes de modificar de alguna forma el set de entrenamiento, analizamos los valor
     \label{plot2}
   \end{center}
 \end{figure}
+
+Mediante Forwar Selection, el algoritmo KNN con un \textit{K} igual a 3 y los resultados recientemente obtenidos se pudo llegar a la conclusión de que solo son necesarios\footnote{No se modifico el set de entrenamiento con este criterio para todos los algoritmos que se usaron hasta el momento} los pixels contenidos en el cuadrante $ [4,26]\times[2,27] $ para obtener buenos resultados. 
+
+En caso de añadir mas registros a nuestro set de entrenamiento, algo que esta dentro de las intenciones del proyecto, se deberia realzar nuevamente este tipo de análisis. Sin embargo, creemos que es importante tener una referencia de la cual partir durante el diseño de este trabajo.
