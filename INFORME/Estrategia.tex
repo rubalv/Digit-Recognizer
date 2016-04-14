@@ -17,4 +17,14 @@ Por ultimo, los problemas del tipo 1 se definen de la siguiente forma; Dados \te
 
 Este ultimo caso admite clasificadores basados en distintas teorías y metodologías ya que solo le interesa el resultado abstracto cubriendo así todas las áreas dentro del reconocimiento de patrones. 
 
-Es entonces que debido a su simplicidad, robustez, alta precisión en los resultados y flexibilidad que optamos por implementar métodos asociados al tipo 1 tales como \textit{El voto por mayoría}, \textit{El voto por mayoría ponderado}
+Es entonces que debido a su simplicidad, robustez, alta precisión en los resultados y flexibilidad que optamos por implementar métodos asociados al tipo 1. \textit{El voto por mayoría}, \textit{El voto por mayoría ponderado} o \textit{Regla de Combinación Bayesiana} son algunos de los métodos que se lograron analizar hasta el momento. De entre ellos se decidió desarrollar \textit{El voto por mayoría ponderada} dada la facilidad que comprende implementarlo\footnote{Puede que a futuro se decida cambiar esta metodología, pero por el momento se pondrá énfasis en el desarrollo de algoritmos de clasificación.}.
+
+\section{El voto por mayoría ponderada.}
+Una mejora del \textit{Voto por mayoría} consiste en considerar la confiabilidad de las respuestas de cada uno de los clasificadores individuales multiplicando cada salida por un peso. Los pesos $ w_{k} $ que expresan la competencia comparativa entre los expertos participantes, se definen como una lista de fracciones tal que
+\[ \sum_{i=1}^{K}w_{i} = 1 \]
+Donde \textit{K} es la cantidad de clasificadores. Cuanto mayor es la competencia de un clasificador, mayor es el valor del \textit{w} asociado.
+
+Denotamos la desicion de un experto $ e_{k} $ que asocia una entrada \textit{x} con la clase $ i^{th} $ como $ d_{ik} $ para $ i = 0,...,9 $. La decisión que surge de la combinación de la salida de los distintos clasificadores para la clase $ i, d_{i}^{com} $, se define como:
+\[ d_{i}^{com} = \sum_{k=1}^{K}w_{k} \times d_{ik} \]
+La decision final $ d^{com} $ estara dada por:
+\[ d^{com} = max_{i = 0,...,9} d_{i}^{com} \]
