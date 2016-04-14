@@ -1,0 +1,31 @@
+\chapter{locality sensitive hashing (LSH)}
+LSH es un conjunto de algoritmos encargados de determinar rápidamente que datos son similares entre si y representa una solución muy eficiente al problema de los vecinos mas cercanos. En este capitulo se explicara como sera su implementación en el trabajo que se esta desarrollando, algunas consideraciones a tener en cuenta y que es lo que se espera de sus resultados.
+
+\section{LSH Euclideano}
+Si consideramos cada registro del conjunto de datos de entrada como un punto de \textit{n} dimensiones\footnote{Cada punto posee inicialmente 784 dimensiones, pero posiblemente este numero se modifique a fin de reducir el costo computacional} es muy fácil pensar que KNN con distancia euclidiana es una excelente elección. Sin embargo, la búsqueda por fuerza bruta conlleva a que su aplicación sea muy poco aconsejable. 
+
+Nuestro objetivo es pre-procesar los datos del set de train mediante una función de hashing que deposite en una mismo contenedor todos aquellos puntos que son similares a un dato \textit{x} de test y a partir de estos aplicar KNN\footnote{Se tiene en cuenta que se deberán modificar los hiper-parámetros que se utilizaron cuando solo se trataba de implementar KNN}. Siendo acordes a los conceptos de LSH, se espera que si la distancia entre \textit{x} y un punto \textit{y} del train es menor o igual a un cierto radio \textit{c}, la probabilidad de que ambos terminen en el mismo contenedor sea alta, mientras que si la distancia es mayor a \textit{c}, la probabilidad de que compartan contenedor sea muy baja. Para ello utilizaremos proyecciones aleatorias.
+
+\section{Proyecciones aleatorias}
+Para un punto \textit{x} en \textit{n} dimensiones, se puede encontrar una proyección aleatorio a $ R^{1} $ generando un vector al azar de \textit{n} dimensiones que denominaremos \textit{r} y devolviendo el producto interno entre ambos.
+
+De acuerdo al teorema de Johnson y Lindenstrauss, una proyección aleatoria debería conservar de cierta forma la distancia entre los puntos, aunque debemos tener en cuenta que al pasar de \textit{n} dimensiones a 1, se comete un cierto error.
+
+Para determinar en que contenedor se deben depositar cada punto solo se necesita discretizar el resultado de la proyección. Entonces, necesitamos saber el valor máximo que puede tomar el producto interno entre los puntos que se están analizando y la cantidad de contenedores que a utiliza.
+
+Si se normalizan los datos de entrada y los vectores aleatorios son escalados en un intervalo $ [0,1] $, el resultado del producto interno sera un valor real entre $ [0,n] $, siendo \textit{n} la cantidad de dimensiones, se puede calcular el intervalo \textit{w} de la discretizacion como:
+\[ w = \frac{n}{b} \]
+Siendo \textit{b} la cantidad de contenedores. Finalmente definimos la función \textit{h} que para un dato \textit{x} devuelve el numero del contenedor al cual pertenece. Esta es nuestra función de hashing.
+\[ h(x) = \lfloor \frac{<x,r>}{w} \rfloor  \]
+
+Siendo coherentes con LSH, no usaremos una única función de hashing, sino mas bien $ R \times B $ funciones de hashing que estarán asociadas a $ R\times B $ tablas con una capacidad de \textit{b} contenedores.
+
+El pre-procesamiento consiste en depositar cada uno de los puntos del train en algún contenedor en cada una de las tablas de hashing. Cada tabla esta asociado a un vector aleatorio que sera utilizado para el proceso de búsqueda. El mismo comprende tomar un dato del set de test, calcular el numero de contenedor en cada una de las para cada una de las tablas y de acuerdo a la construcción mixta que elijamos usar, obtener un conjunto de datos sobre el cual aplicar KNN. 
+
+Supongamos que nos decidimos por una construcción del tipo AND-OR. Entonces para un dato \textit{x} se calcula el numero de contenedor para cada tabla. Se substrae de cada contenedor el conjunto de puntos que allí se depositaron y cada \textit{R} tablas realizar una intersección entre estos conjuntos. Luego finalizar con una unión de los conjuntos obtenidos.
+
+\section{Tareas a futuro}
+Para este algoritmo aun no se puedo determinar los valores para \textit{R} y \textit{B}, por lo que aun esta en proceso de desarrollo. Sin embargo, es sin duda alguna uno de los clasificadores a utilizar en este trabajo.
+
+Se espera que los resultados sean tan buenos o mejores que los obtenidos por KNN, reduciendo el tiempo que consume en el procesamiento de datos. 
+
