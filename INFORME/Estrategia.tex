@@ -1,0 +1,20 @@
+\chapter{Combinación de clasificadores}
+La estrategia que vamos a desarrollar para cumplir con el objetivo planteado comprende llevar adelante la construcción de múltiples algoritmos de clasificación y a partir de la combinación de sus resultados lograr una mayor precisión en el reconocimiento de dígitos. En la actualidad existen múltiples estudios sobre métodos para combinar clasificadores, de entre todos ellos se decidió dar una mayor atención a aquellos que nos ofrezcan una alta precisión. Se tuvo en cuenta para la selección del tipo de combinación, los clasificadores que se van a implementar, su diversificación y su complementariedad. Cada uno de estos serán tratados mas adelante en el informe, por lo que en este capitulo nos dedicaremos exclusivamente al desarrollo de los distintos tipos de combinación que se hallaron y cual fue la elección que mejor se ajusta a nuestros objetivos e implementación.
+
+Definiremos \textit{P} como el espacio de datos de entrada tal que $ P = C_{0}\cup...\cup C_{9} $, donde $ C_{i} $ refiere a los datos pertenecientes a la clase $ \textit{i} \in A = \{0,1,...,9\} $. Para una muestra \textit{x} extraída de \textit{P}, se puede decir que la tarea de un clasificador \textit{e} consiste en asignar un índice $ \textit{j}\in A $ a la muestra \textit{x}. Entonces \textit{e} es una función tal que $ e(x) = j  $
+
+De acuerdo con la salida de un clasificador se definen tres tipos de problemas para los cuales se aplican distintas técnicas de combinación.
+\begin{enumerate}
+  \item Nivel abstracto o salida compuesta por una única clase.
+  \item Nivel de rangos o listas categorizadas.
+  \item Nivel de mediciones.
+\end{enumerate}
+Los problemas de Tipo 3 requieren que todos los clasificadores produzcan un vector de números reales de tamaño \textit{m}, siendo \textit{m} la cantidad de clases, donde en cada posición \textit{i} se guarda la probabilidad de que una muestra \textit{x} pertenezca a la clase \textit{i}. Este luego sera procesado para dotar a la muestra \textit{x} de un índice.
+
+Por otro lado, los problemas del tipo 2 requieren que las salidas de los clasificadores sean una lista de las posibles clases a la cuales pertenezca una muestra \textit{x}. El mismo puede estar ordenada por algún criterio referente a los algoritmos que se implementaron.
+
+Por ultimo, los problemas del tipo 1 se definen de la siguiente forma; Dados \textit{K} clasificadores individuales $ e_{k}, k = 1,...,K $ cada uno de los cuales asigna un rótulo $ j_{k} $ a una entrada \textit{x}, produciendo el evento $ e_{k}(x) = j_{k} $, se utilizan dichos eventos para construir el clasificador integrado \textit{E} que asigna $ E(x) = j $. 
+
+Este ultimo caso admite clasificadores basados en distintas teorías y metodologías ya que solo le interesa el resultado abstracto cubriendo así todas las áreas dentro del reconocimiento de patrones. 
+
+Es entonces que debido a su simplicidad, robustez, alta precisión en los resultados y flexibilidad que optamos por implementar métodos asociados al tipo 1 tales como \textit{El voto por mayoría}, \textit{El voto por mayoría ponderado}
