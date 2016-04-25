@@ -1,0 +1,21 @@
+\chapter{KNN.}
+El algoritmo KNN tiene la ventaja de tener solo 2 hiperparámetros que hay que definir para realizar la clasificación. Por otro lado en su versión naive, con grandes cantidades de datos, el costo computacional es muy elevado.
+Por este motivo a la hora de implementar el algoritmo, es conveniente analizar previamente el set de datos, y realizar acciones sobre este.
+
+La primera cuestión que se analizó es determinar la verdadera dimensión de los datos. El set de datos tenia varias columnas con presencia de ceros en todas sus filas, esto indicaba que esas columnas no eran necesarias, y los datos en realidad tenian menos dimensiones. Reducir las dimensiones es una primera mejora para disminuir el costo computacional, pero todavía existe el problema de la cantidad de filas a leer en el set de datos. 
+
+Existen varias alternativas para aproximar la cantidad de puntos del set de entrenamiento contra los que se van a comparar los puntos a clasificar.
+
+Una es agrupar los puntos por algún patrón que tengan en común. El agrupamiento, al igual que la clasificación consituyen sistemas de aprendizaje automático. La idea del agrupamiento, es tener un punto por agrupamiento que representa las caracteristicas comunes del grupo. De esta manera en lugar de comparar contra todos los puntos,se puede comparar solo contra los candidatos de los grupos, y asi determinar a que grupo pertenece el punto de la consulta. Luego el punto de la consulta se compara contra todos los puntos del grupo.
+
+Otra alternativa es particionar el espacio en el que se está trabajando en regiones no superpuestas,generalmente de forma recursiva. Las regiones se pueden ordenar por algún criterio para que una comparación contra todos los puntos del espacio se reduzca a una comparación contra una partición del espacio, y luego una subpartición de la partición y asi sucesivamente hasta no hallar más particiones. Luego solo se compara el punto con todos los puntos de una sola región que no tiene más particiones.
+
+Se probó el algoritmo knn variando los valores de sus parámetros y se subieron las predicciones al sitio Kaggle.
+A continuación se muestran las pruebas realizadas y sus resultados:
+\begin{enumerate}
+  \item con k=10 y distancia Minkowski con p=0.5 dio 0.96557
+  \item con k=3 y distancia Minkowski con p=0.5 dio 0.96857
+  \item con k=3 y distancia Minkowski con p=1 dio 0.96857
+  \item con k=7 y distancia Minkowski con p=2 0.96700
+  \item con k=7 y distancia Minkowski con p=1 0.96700
+\end{enumerate}
