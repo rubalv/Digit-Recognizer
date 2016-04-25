@@ -40,6 +40,6 @@ Antes de modificar de alguna forma el set de entrenamiento, analizamos los valor
   \end{center}
 \end{figure}
 
-Mediante Forwar Selection, el algoritmo KNN con un \textit{K} igual a 3 y los resultados recientemente obtenidos se pudo llegar a la conclusión de que solo son necesarios\footnote{No se modifico el set de entrenamiento con este criterio para todos los algoritmos que se usaron hasta el momento} los píxeles contenidos en el cuadrante $ [4,26]\times[2,27] $\footnote{Considerando cada registro como una matriz de $ [1,28]\times[1,28] $}. De esta forma se pasa de lidiar con 784 atributos por registro a 550.
+Mediante Forward Selection y el algoritmo KNN con un \textit{K} igual a 3 se pudo llegar a la conclusión de que solo son necesarios\footnote{No se modifico el set de entrenamiento con este criterio para todos los algoritmos que se usaron hasta el momento} los píxeles contenidos en el cuadrante $ [4,26]\times[2,27] $\footnote{Considerando cada registro como una matriz de $ [1,28]\times[1,28] $}. De esta forma se pasa de lidiar con 784 atributos por registro a 550.
 
 En caso de añadir mas registros a nuestro set de entrenamiento, algo que esta dentro de las intenciones del proyecto, se debería realzar nuevamente este tipo de análisis. Sin embargo, creemos que es importante tener una referencia de la cual partir durante el diseño de este trabajo.

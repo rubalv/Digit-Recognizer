@@ -18,7 +18,7 @@ Por ultimo, los problemas del tipo 1 se definen de la siguiente forma; Dados \te
 
 Este ultimo caso admite clasificadores basados en distintas teorías y metodologías ya que solo le interesa el resultado abstracto cubriendo así todas las áreas dentro del reconocimiento de patrones. 
 
-Es entonces que debido a su simplicidad, robustez, alta precisión en los resultados y flexibilidad que optamos por implementar métodos asociados al tipo 1. \textit{El voto por mayoría}, \textit{El voto por mayoría ponderado} o \textit{Regla de Combinación Bayesiana} son algunos de los métodos que se lograron analizar hasta el momento. De entre ellos se decidió desarrollar \textit{El voto por mayoría ponderada} dada la facilidad que comprende implementarlo\footnote{Puede que a futuro se decida cambiar esta metodología, pero por el momento se pondrá énfasis en el desarrollo de algoritmos de clasificación.}.
+Es entonces que debido a su simplicidad, robustez, alta precisión en los resultados y flexibilidad que optamos por implementar métodos asociados al tipo 1. \textit{El voto por mayoría}, \textit{El voto por mayoría ponderado} o \textit{Regla de Combinación Bayesiana} son algunos de los métodos que se lograron analizar hasta el momento. De entre ellos se decidió desarrollar \textit{El voto por mayoría ponderada} dada la facilidad que comprende implementarlo.
 
 \section{El voto por mayoría ponderada.}
 Una mejora del \textit{Voto por mayoría} consiste en considerar la confiabilidad de las respuestas de cada uno de los clasificadores individuales multiplicando cada salida por un peso. Los pesos $ w_{k} $ que expresan la competencia comparativa entre los expertos participantes, se definen como una lista de fracciones tal que
