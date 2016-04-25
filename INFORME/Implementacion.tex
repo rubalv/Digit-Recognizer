@@ -1,8 +1,0 @@
-\chapter{Estructura de la aplicación final.}
-Se menciono anteriormente que una de las razones por las que se desarrollo esta estrategia fue la flexibilidad con la que se cuenta, es decir, la capacidad de agregar o quitar módulos, ya sean clasificadores o mismo el algoritmo encargado de combinarlos, de acuerdo a resultados obtenidos sin la necesidad de afectar la aplicación en general. 
-
-Una razón más para sustentar este diseño es que se pueden obtener resultados sin la necesidad de que el costo computacional recaiga sobre un único computador. 
-
-Si separamos el modulo encargado de combinar los resultados, de los módulos clasificadores, podremos ejecutarlos por separado. Entonces, por un lado, cada uno de los algoritmos clasificadores procesaran los datos de forma independiente del resto y generaran resultados que serán almacenados\footnote{Los mismo deben estar al alcance de todo el equipo y ser actualizados tras cada ejecución.}. Posteriormente, el algoritmo que se encargue de combinar esas salidas, tomara en cuenta los resultados parciales que se obtuvieron hasta el momento de su ejecución, los evaluara y devolverá los resultados que finalmente serán entregados a \textit{Kaggle}.
-
-Se menciona esto para que se tenga en cuenta durante la evaluación del trabajo realizado y el porque de su estructura.
